@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diverse Application Identifier</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+</head>
+<body>  
+  <h3> Organization Diversity Details </h3>
+  <table class="table">
+<thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">dunsnum</th>
+    <th scope="col">dunsname</th>
+    <th scope="col">dunsurl</th>
+    <th scope="col">iswomenowned</th>
+    <th scope="col">minorityowneddesc</th>
+
+  </tr>
+</thead>
+<tbody>
+  <% if(data.length){
+ 
+  for(var i = 0; i< data.length; i++) {%>  
+  <tr>
+    <th scope="row"><%= (i+1) %></th>
+    <td><%= data[i].dunsnum %></td>
+    <td><%= data[i].dunsname %></td>
+    <td><%= data[i].dunsurl %></td>
+    <%if(data[i].iswomenowned == 1){%>  
+      <td>Yes</td>
+      <% } %>  
+    <%if(data[i].iswomenowned == 0){%>  
+      <td>No</td>
+      <% } %> 
+    <td><%= data[i].minorityowneddesc %></td>
+
+  </tr>
+  <% }
+           
+   }else{ %>
+       <tr>
+          <td colspan="2">No user</td>
+       </tr>
+    <% } %>    
+  
+</tbody>
+</table>
+
+<a href="/">Back To Home Page</a>
+</body>
+</html>
