@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+    <meta charset = "UTF-8">
+    <script lang="javascript" src="dist/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+
+.container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container img {vertical-align: middle;}
+
+.container .content {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+div {
+        margin-bottom: 10px;
+      }
+      label {
+        display: inline-block;
+        width: 200px;
+        color: #0a0a0a;
+      }
+      input {
+        padding: 5px 10px;
+      }
+
+
+input[type=text], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=file], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(27, 26, 26);
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+
+  input[type=submit] {
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input[type=text]:focus {
+    border: 3px solid #555;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+        * {
+              box-sizing: border-box
+          }     
+        * {
+  box-sizing: border-box;
+}
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial;
+        }
+      .tab {
+   
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: blue;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 17px;
+            width: 25%;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: rgb(22, 21, 21);
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 100px 20px;
+    height: 100%;
+  }
+  img {
+  opacity: 0.9;
+}
+
+img:hover {
+  opacity: 1.0;
+}
+  #Home {
+background-color: rgb(235, 213, 213);
+background: url("");
+background-size:8%13%;
+background-position: 1%15%;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-attachment: scroll;
+
+
+  }
+
+  #Search{
+    background-color: rgb(148, 148, 143);
+    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbs0gRGcPUEmQHCI0tPpKq1y-6WfiXa3ZgVA&usqp=CAU");
+    background-size:100%1000%;
+    background-position: 2%10%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-attachment: scroll;
+
+}
+
+  #Dashboard{
+		
+  }
+
+  #ContactUs{
+    background-color: rgb(226, 230, 180);
+    background: url("data:image/jpeg;base64,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");
+    background-size:20%20%;
+    background-position: 51%20%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-attachment: scroll;
+    
+
+  }
+    </style>
+    </head>
+<body>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openPage(event, 'Home')" id="defaultOpen">Home</button>
+        <button class="tablinks" onclick="openPage(event, 'Search')">Search</button>
+        <button class="tablinks" onclick="openPage(event, 'Dashboard')">Dashboard</button>
+        <button class="tablinks" onclick="openPage(event, 'ContactUs')">Contact Us</button>
+      </div>
+
+    <form>
+    <div id="Home" class="tabcontent">
+            <h1 style="text-align: center">Welcome to Diversity Led Business Identification Tool..!!</h1>
+            <img src="https://www.aihr.com/wp-content/uploads/Diversity-.png"  alt="Diversity" width="1300" height="300">
+      
+    </div>
+</form>
+
+<form>
+  
+  <div id="Dashboard" class="tabcontent">
+ <img src="/stylesheets/workInProgress.png" width="300" height="300">
+ 
+ </div>
+ </form>  
+
+<form action="/users/create" method="POST">
+    <div id="Search" class="tabcontent">
+        <h1 style="text-align:center">Search Page</h1>
+    <fieldset>
+    
+       <div class="single_entry">
+        <label><b>Enter your DUNS Number </b></label>
+        <input type ="text" id = 'dunsnum' name="dunsnum">
+        <br><br>
+
+        <label><b>Enter your DUNS Name</b></label>
+        <input type ="text" id = 'dunsname' name="dunsname">
+        <br><br>
+
+        <label><b>Enter your DUNS URL <span style="color:red">*</span></b></label>
+        <input type ="text" id = 'dunsurl' name="dunsurl" required>
+        <br><br>
+        <input type="submit" value="Submit">
+        
+      </div>
+    </fieldset>
+</form>
+
+      <br><br>
+      <br><br>
+      <form action="/uploadfile" enctype="multipart/form-data" method="POST">
+        <fieldset>
+        <h4><b>Upload your Excel file here if you have bulk request</h5></b>
+        <input type="file" name="file" accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' >
+        <input type="submit" value="Upload File">
+      </form> 
+      <br><br>
+
+    </fieldset>
+</div>
+
+<form >
+    <div id="ContactUs" class="tabcontent">
+        <br><br>
+        <br><br>
+        
+  <style>
+    table {
+        
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<table>
+    <tr>
+      <th>Sl No</th>
+      <th>Name</th>
+      <th>Email ID</th>
+    </tr>
+    <tr>
+      <td>UID : sample1</td>
+      <td>Name: Contact person name</td>
+      <td>Email id: Contact person email id</td>
+    </tr>
+    <tr>
+      <td>UID : sample2</td>
+      <td>Name: Contact person name</td>
+      <td>Email id: Contact person email id</td>
+    </tr>
+    <tr>
+      <td>UID : sample3</td>
+      <td>Name: Contact person name</td>
+      <td>Email id: Contact person email id</td>
+    </tr>
+  </table>
+</form>
+
+ 
+</body>
+</html>
+<script>
+    function openPage(evt, page) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(page).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+document.getElementById("defaultOpen").click();
+</script>
